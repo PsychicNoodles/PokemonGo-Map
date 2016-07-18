@@ -510,7 +510,7 @@ def main():
             # print(diff)
             difflat = diff.lat().degrees
             difflng = diff.lng().degrees
-            
+
             disappear_timestamp = time.time() + poke.TimeTillHiddenMs/1000
             disappear_time_formatted = datetime.fromtimestamp(disappear_timestamp).strftime("%H:%M:%S")
             disappears_at = 'disappears at %s' % (disappear_time_formatted)
@@ -628,8 +628,12 @@ def fullmap():
     )
     return render_template('example_fullmap.html', fullmap=fullmap)
 
+@app.route('/grinnell')
+def grinnell():
+    return render_template('grinnell.html')
+
 
 if __name__ == "__main__":
     args = get_args()
-    register_background_thread(initial_registration=True)
+    # register_background_thread(initial_registration=True)
     app.run(debug=True, threaded=True, host=args.host, port=args.port)
